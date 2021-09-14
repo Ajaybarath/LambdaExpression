@@ -3,6 +3,7 @@ package com.bridgeLabz.LambdaExpression;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 interface Consumer<T> {
 	public void accept(Integer t);
@@ -37,6 +38,12 @@ public class MyConsumer implements Consumer<Integer> {
 		myList.forEach(myConsumerList);
 		
 		myList.forEach(n -> System.out.println(n));
+		
+		Function<Integer, Double> doubleFunction = Integer::doubleValue;
+		
+		myList.forEach(n -> {
+			System.out.println(doubleFunction.apply(n));
+		});
 
 	}
 
