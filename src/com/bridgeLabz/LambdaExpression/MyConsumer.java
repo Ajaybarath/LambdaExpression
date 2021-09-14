@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 interface Consumer<T> {
 	public void accept(Integer t);
@@ -30,19 +31,25 @@ public class MyConsumer implements Consumer<Integer> {
 		}
 
 		MyConsumer myConsumer = new MyConsumer();
-		
+
 		java.util.function.Consumer<? super Integer> myConsumerList = n -> {
 			System.out.println(n);
 		};
-		
+
 		myList.forEach(myConsumerList);
-		
+
 		myList.forEach(n -> System.out.println(n));
-		
+
 		Function<Integer, Double> doubleFunction = Integer::doubleValue;
-		
+
 		myList.forEach(n -> {
 			System.out.println(doubleFunction.apply(n));
+		});
+
+		Predicate<Integer> evenFunction = n -> n%2 == 0;
+
+		myList.forEach(n -> {
+			System.out.println(evenFunction.test(n));
 		});
 
 	}
